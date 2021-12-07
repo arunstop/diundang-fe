@@ -8,7 +8,7 @@
       app
       temporary
       bottom
-      mobile-breakpoint="sm"
+      mobile-breakpoint="720"
     >
       <v-list>
         <v-list-item
@@ -31,7 +31,7 @@
       :clipped-left="clipped"
       fixed
       app
-      class="dng-header elevation-0 transparent"
+      class="dng-header elevation-0 transparent pe-2"
       dark
     >
       <UtilLogo />
