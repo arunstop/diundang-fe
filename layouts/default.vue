@@ -1,11 +1,14 @@
 <template>
-  <v-app dark>
+  <v-app class="dng-app">
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
       app
+      temporary
+      bottom
+      mobile-breakpoint="sm"
     >
       <v-list>
         <v-list-item
@@ -28,33 +31,14 @@
       :clipped-left="clipped"
       fixed
       app
+      class="dng-header elevation-0 transparent"
+      dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+      <UtilLogo />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn @click.stop="drawer = !drawer">
+        <v-icon left> mdi-menu </v-icon>
+        Menu
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -62,36 +46,28 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
+    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon light> mdi-repeat </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <UtilFooter />
+    <v-slide-y-reverse-transition origin="center center">
+      <UtilBtnScrollTop v-if="scrolled" />
+    </v-slide-y-reverse-transition>
   </v-app>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
+      scrolled: false,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -99,19 +75,50 @@ export default {
         {
           icon: 'mdi-apps',
           title: 'Welcome',
-          to: '/'
+          to: '/',
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
-          to: '/inspire'
-        }
+          to: '/inspire',
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
     }
-  }
+  },
+  mounted() {
+    // indicate whether main container is scrolled
+    const dngApp = document.getElementsByClassName('dng-app')[0]
+    // console.log(dngApp)
+    dngApp.onscroll = () => {
+      if (dngApp.scrollTop >= 240) {
+        this.scrolled = true
+      } else {
+        this.scrolled = false
+      }
+    }
+  },
 }
 </script>
+<style>
+html {
+  overflow: hidden !important;
+}
+
+/* Make header has no pointer events */
+.dng-header {
+  pointer-events: none;
+}
+/* Then give all its children to have pointer events */
+.dng-header > .v-toolbar__content * {
+  pointer-events: all;
+}
+
+.dng-app {
+  height: 100vh !important;
+  overflow-y: auto !important;
+}
+</style>
