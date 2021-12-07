@@ -36,7 +36,7 @@
     >
       <UtilLogo />
       <v-spacer />
-      <v-btn @click.stop="drawer = !drawer">
+      <v-btn color="primary" @click.stop="drawer = !drawer">
         <v-icon left> mdi-menu </v-icon>
         Menu
       </v-btn>
@@ -46,16 +46,6 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <UtilFooter />
     <v-slide-y-reverse-transition origin="center center">
       <UtilBtnScrollTop v-if="scrolled" />
@@ -120,5 +110,14 @@ html {
 .dng-app {
   height: 100vh !important;
   overflow-y: auto !important;
+}
+
+.dng-app .v-main{
+  padding:0px !important;
+}
+
+.dng-app .container{
+  padding:0px !important;
+  max-width: 100vw !important;
 }
 </style>

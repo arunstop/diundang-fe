@@ -6,7 +6,7 @@
       class="font-weight-black text-h6 rounded-pill py-4"
       style="letter-spacing: 4px !important; border-width: medium !important"
     >
-      DIUNDANG
+      DIUNDANG.
     </v-btn>
   </div>
 </template>

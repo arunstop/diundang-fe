@@ -21,7 +21,7 @@
         </v-list-item>
       </v-list>
       <div class="font-weight-black text-h6 dng-email-input-btn-send">
-        Copyright &copy; {{ new Date().getFullYear() }} DIUNDANG TEAM
+        Copyright &copy; {{ new Date().getFullYear() }} - DIUNDANG. TEAM
       </div>
     </v-col>
   </v-footer>
