@@ -3,12 +3,7 @@
     <v-row no-gutters>
       <v-col class="d-flex justify-center" cols="12" md="6">
         <v-card class="ma-auto elevation-0">
-          <v-img
-            class="ma-12 rounded-xl"
-            min-height="200"
-            min-width="400"
-            src="https://c.tenor.com/XLqgLpeeEFEAAAAC/admiralbulldog-dota2.gif"
-          />
+          <SectionServiceImg :src="'https://c.tenor.com/XLqgLpeeEFEAAAAC/admiralbulldog-dota2.gif'"/>
         </v-card>
       </v-col>
       <v-card
@@ -45,12 +40,7 @@
     <v-row no-gutters class="flex-row-reverse">
       <v-col class="d-flex justify-center" cols="12" md="6">
         <v-card class="ma-auto elevation-0">
-          <v-img
-            class="ma-12 rounded-xl"
-            min-height="200"
-            min-width="400"
-            src="https://c.tenor.com/qGlUJhjuEzkAAAAd/barry-allen-running.gif"
-          />
+          <SectionServiceImg :src="'https://c.tenor.com/qGlUJhjuEzkAAAAd/barry-allen-running.gif'"/>
         </v-card>
       </v-col>
       <v-card
@@ -87,12 +77,8 @@
     <v-row no-gutters>
       <v-col class="d-flex justify-center" cols="12" md="6">
         <v-card class="ma-auto elevation-0">
-          <v-img
-            class="ma-12 rounded-xl"
-            min-height="200"
-            min-width="400"
-            src="https://c.tenor.com/OsY6PRXROm4AAAAC/kage-bunshin.gif"
-          />
+                   <SectionServiceImg :src="'https://c.tenor.com/OsY6PRXROm4AAAAC/kage-bunshin.gif'"/>
+
         </v-card>
       </v-col>
       <v-card
@@ -120,7 +106,7 @@
           </v-card-text>
           <v-card-text>
             <v-btn class="text-none" large rounded color="primary">
-              We'll help you to choose one, don't worry
+              Relax, We'll help you to choose
             </v-btn>
           </v-card-text>
         </div>

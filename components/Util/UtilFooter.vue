@@ -17,7 +17,7 @@
       </v-text-field>
       <v-list color="transparent">
         <v-list-item>
-          <v-list-item-title> Hallo </v-list-item-title>
+          <v-list-item-title> Subscribe to our newsletter </v-list-item-title>
         </v-list-item>
       </v-list>
       <div class="font-weight-black text-h6 dng-email-input-btn-send">
