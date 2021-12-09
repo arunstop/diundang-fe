@@ -2,19 +2,18 @@
   <v-col cols="12" class="secondary pa-12">
     <v-row class="mb-6" no-gutters justify="center">
       <v-alert
-        class="text-h4 elevation-0 text-center transparent mb-0"
+        class="text-h4 elevation-0 text-center transparent mb-0 font-weight-bold"
         colored-border
         color="white"
         border="bottom"
         dark
       >
-        Hear what people has experienced
+        Hear what people have experienced
       </v-alert>
     </v-row>
     <v-scroll-x-reverse-transition
       class="row no-gutters"
       group
-      origin="center center"
     >
       <SectionTestimonyItem
         v-for="test in testList"
@@ -46,10 +45,10 @@ export default {
     isSeeMoreLoading: false,
   }),
   mounted() {
-    this.loadMore(11)
+    this.loadMore(11,0)
   },
   methods: {
-    loadMore(qty) {
+    loadMore(qty,delay=121) {
       this.isSeeMoreLoading = true
       for (let i = 1; i < qty; i++) {
         setTimeout(() => {
@@ -65,7 +64,7 @@ export default {
           facere rerum adipisci deleniti quas! Facere totam dolorum fugiat
           voluptates tempore. Nobis, ex.`,
           })
-        }, i * 240)
+        }, i * delay)
       }
 
       if (this.testList.length > 33) {

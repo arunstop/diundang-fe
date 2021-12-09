@@ -3,5 +3,6 @@
     <SectionHero />
     <SectionService />
     <SectionTestimony/>
+    <SectionPricing/>
   </v-row>
 </template>
