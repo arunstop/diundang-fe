@@ -50,7 +50,7 @@ export default {
   methods: {
     loadMore(qty,delay=121) {
       this.isSeeMoreLoading = true
-      for (let i = 1; i < qty; i++) {
+      for (let i = 0; i < qty; i++) {
         setTimeout(() => {
           if (i === qty-1) {
             this.isSeeMoreLoading = false
