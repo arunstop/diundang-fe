@@ -11,7 +11,11 @@
         Hear what people has experienced
       </v-alert>
     </v-row>
-    <v-scroll-x-reverse-transition class="row no-gutters" group origin="center center">
+    <v-scroll-x-reverse-transition
+      class="row no-gutters"
+      group
+      origin="center center"
+    >
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"
@@ -21,8 +25,15 @@
     <!-- <v-row class="mb-6" no-gutters>
       
     </v-row> -->
-    <v-row v-if="!maxData" no-gutters justify="center" @click="loadMore(5)">
-      <v-btn outlined class="rounded-lg" color="white"> See More ... </v-btn>
+    <v-row v-if="!maxData" no-gutters justify="center" @click="loadMore(11)">
+      <v-btn
+        outlined
+        class="rounded-lg"
+        color="white"
+        :loading="isSeeMoreLoading"
+      >
+        See More ...
+      </v-btn>
     </v-row>
   </v-col>
 </template>
@@ -32,14 +43,19 @@ export default {
   data: () => ({
     testList: [],
     maxData: false,
+    isSeeMoreLoading: false,
   }),
   mounted() {
     this.loadMore(11)
   },
   methods: {
     loadMore(qty) {
+      this.isSeeMoreLoading = true
       for (let i = 1; i < qty; i++) {
         setTimeout(() => {
+          if (i === qty-1) {
+            this.isSeeMoreLoading = false
+          }
           this.testList.push({
             id: Math.random() * Math.random(),
             img: 'https://i.pravatar.cc/' + Math.floor(Math.random() * 79) + 1,
@@ -49,12 +65,11 @@ export default {
           facere rerum adipisci deleniti quas! Facere totam dolorum fugiat
           voluptates tempore. Nobis, ex.`,
           })
-        }, i*240)
+        }, i * 240)
       }
 
-      if (this.testList.length > 30) {
+      if (this.testList.length > 33) {
         this.maxData = true
-
       }
     },
   },
