@@ -5,7 +5,7 @@
       <v-list-item-avatar size="60">
         <v-img :src="data.img">
           <template #placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
+            <v-row class="fill-height ma-0 primary" align="center" justify="center">
               <v-progress-circular
                 indeterminate
                 color="white"

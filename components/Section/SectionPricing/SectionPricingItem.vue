@@ -1,13 +1,14 @@
 <template>
-  <v-col cols="12" md="6" lg="4" class="pa-6">
+  <v-col cols="12" md="6" lg="4" sm="6" class="pa-6 pa-sm-6">
     <v-card class="rounded-xl transparent elevation-6">
       <v-card-title
-        class="
+        class=" v-btn--outlined
           dng-section-pricing-item-header
           justify-center
-          primary
-          white--text
+          primary--text
+          font-weight-bold
           text-center
+          dng-border-thick
         "
       >
         {{ data.title }}
@@ -24,7 +25,7 @@
             </v-list-item>
             <v-divider
               v-if="index < data.featureList.length - 1"
-              :key="index"
+              :key="data.title+''+index"
             ></v-divider>
           </template>
         </v-list>
@@ -32,6 +33,7 @@
       <v-list-item
         class="white--text secondary font-weight-bold"
         link
+        @click="showAuthDialog()"
       >
         <v-list-item-title class="text-center">
             Buy / Rp. 100.000,-
@@ -44,6 +46,14 @@
 <script>
 export default {
   props: { data: { type: Object, default: () => {} } },
+  methods:{
+    showAuthDialog(){
+      this.$store.dispatch('ui/ui/toggleDialog', {
+        type: 'DIALOG_AUTH',
+        value: true,
+      })
+    }
+  }
 }
 </script>
 
@@ -52,5 +62,9 @@ export default {
   border-bottom: thin solid grey !important;
 }
 .dng-section-pricing-item-header {
+}
+
+.dng-border-thick{
+  border-width: thick !important;
 }
 </style>

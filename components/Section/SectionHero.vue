@@ -16,9 +16,9 @@
               lightsaber.]
             </div>
             <div class="d-flex">
-              <v-btn class="ms-auto rounded-xl" color="accent" x-large>
-                Attack, Kenobi!
-                <v-icon large right> mdi-chevron-right </v-icon>
+              <v-btn class="ms-auto rounded-xl" color="secondary" x-large @click="showAuthDialog()">
+                Join now!
+                <!-- <v-icon large right> mdi-chevron-right </v-icon> -->
               </v-btn>
             </div>
           </v-card-text>
@@ -29,7 +29,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    showAuthDialog() {
+      console.log(this.$store)
+      this.$store.dispatch('ui/ui/toggleDialog', 
+      {
+        type: 'DIALOG_AUTH',
+        value : true
+      })
+    },
+  },
+}
 </script>
 
 <style>

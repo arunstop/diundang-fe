@@ -1,16 +1,16 @@
 <template>
-  <v-col cols="12" class="pa-12">
-    <v-row class="mb-6" no-gutters justify="center">
-      <v-alert
-        class="text-h4 elevation-0 text-center transparent mb-0 font-weight-bold"
-        colored-border
-        color="secondary"
-        border="bottom"
-      >
-        Ergonomic prices, won't let you go bankrupt!
-      </v-alert>
+  <v-col cols="12" class="pa-0">
+    <v-row class="mb-6 mx-6" no-gutters justify="center">
+      <SectionTitle
+        :title="`Ergonomic prices, won't let you go bankrupt!`"
+        :color="`secondary`"
+      />
     </v-row>
-    <v-slide-x-reverse-transition group origin="center center" class="row justify-center no-gutters">
+    <v-slide-x-reverse-transition
+      group
+      origin="center center"
+      class="row justify-center no-gutters"
+    >
       <SectionPricingItem
         v-for="price in priceList"
         :key="price.id"

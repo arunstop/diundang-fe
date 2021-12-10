@@ -1,20 +1,12 @@
 <template>
-  <v-col cols="12" class="secondary pa-12">
+  <v-col cols="12" class="secondary pa-lg-12 pa-md-12 pa-6">
     <v-row class="mb-6" no-gutters justify="center">
-      <v-alert
-        class="text-h4 elevation-0 text-center transparent mb-0 font-weight-bold"
-        colored-border
-        color="white"
-        border="bottom"
-        dark
-      >
-        Hear what people have experienced
-      </v-alert>
+      <SectionTitle
+        :title="`Hear what people have experienced`"
+        :color="`white`"
+      />
     </v-row>
-    <v-scroll-x-reverse-transition
-      class="row no-gutters"
-      group
-    >
+    <v-scroll-x-reverse-transition class="row no-gutters" group>
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"
@@ -45,14 +37,14 @@ export default {
     isSeeMoreLoading: false,
   }),
   mounted() {
-    this.loadMore(11,0)
+    this.loadMore(11, 0)
   },
   methods: {
-    loadMore(qty,delay=121) {
+    loadMore(qty, delay = 121) {
       this.isSeeMoreLoading = true
       for (let i = 0; i < qty; i++) {
         setTimeout(() => {
-          if (i === qty-1) {
+          if (i === qty - 1) {
             this.isSeeMoreLoading = false
           }
           this.testList.push({

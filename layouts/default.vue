@@ -41,7 +41,7 @@
         Menu
       </v-btn>
     </v-app-bar>
-    <v-main>
+    <v-main :class="onDialogMode() ? 'dng-app-blur' :''">
       <v-container>
         <Nuxt />
       </v-container>
@@ -50,10 +50,12 @@
     <v-slide-y-reverse-transition origin="center center">
       <UtilBtnScrollTop v-if="scrolled" />
     </v-slide-y-reverse-transition>
+    <DialogList/>
   </v-app>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data() {
     return {
@@ -78,6 +80,9 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js',
     }
+  },
+  computed:{
+    ...mapGetters('ui/ui', ['onDialogMode'])
   },
   mounted() {
     // indicate whether main container is scrolled
@@ -119,5 +124,10 @@ html {
 .dng-app .container{
   padding:0px !important;
   max-width: 100vw !important;
+}
+
+.dng-app-blur .container{
+  /* -webkit-filter: blur(4px);
+  filter: blur(4px); */
 }
 </style>
