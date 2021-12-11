@@ -21,9 +21,9 @@
         Back
       </v-btn>
 
-      <v-card-text class="dng-dialog-auth-content">
+      <v-card-text class="dng-dialog-auth-content d-flex pa-0">
         <v-slide-y-reverse-transition
-          class="row no-gutters justify-center align-center"
+          class="row no-gutters justify-center align-center ma-6"
           group
           hide-on-leave
         >

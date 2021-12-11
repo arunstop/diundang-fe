@@ -2,7 +2,7 @@
   <v-row no-gutters justify="center" align="center">
     <SectionHero />
     <SectionService />
-    <SectionTestimony/>
-    <SectionPricing/>
+    <LazySectionTestimony/>
+    <LazySectionPricing/>
   </v-row>
 </template>

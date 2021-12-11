@@ -100,32 +100,7 @@ export default {
 }
 </script>
 <style>
-html {
-  overflow: hidden !important;
-}
 
-/* Make header has no pointer events */
-.dng-header {
-  pointer-events: none;
-}
-/* Then give all its children to have pointer events */
-.dng-header > .v-toolbar__content * {
-  pointer-events: all;
-}
-
-.dng-app {
-  height: 100vh !important;
-  overflow-y: auto !important;
-}
-
-.dng-app .v-main{
-  padding:0px !important;
-}
-
-.dng-app .container{
-  padding:0px !important;
-  max-width: 100vw !important;
-}
 
 /* .dng-app-blur .container{
   -webkit-filter: blur(4px);

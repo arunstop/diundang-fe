@@ -6,13 +6,13 @@
         :color="`white`"
       />
     </v-row>
-    <v-scroll-x-reverse-transition class="row no-gutters" group>
+    <transition-group class="row no-gutters" name="fade-transition">
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"
         :data="test"
       />
-    </v-scroll-x-reverse-transition>
+    </transition-group>
     <!-- <v-row class="mb-6" no-gutters>
       
     </v-row> -->
@@ -51,7 +51,6 @@ export default {
     loadMore(commentList, delay = 121) {
       // if first page, no need to add delay
       if (this.page === 1) delay = 0
-      this.isSeeMoreLoading = true
       commentList.forEach((comment, idx) => {
         setTimeout(() => {
           // set loading to false if it is the last data
@@ -72,6 +71,8 @@ export default {
       }
     },
     apiGetComments() {
+        this.isSeeMoreLoading = true
+
       // GET COMMENTS
       this.$API_DUMMY.getComments((err, data) => {
         if (err) return console.log(err)

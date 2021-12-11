@@ -16,7 +16,7 @@
         "
         min-height="420px"
       >
-        <div class="ma-12">
+        <v-col cols="12" class="ma-12">
           <v-card-title class="text-h4 font-weight-bold">
             <span>
               <v-icon x-large color="primary"> mdi-volume-high </v-icon>
@@ -34,7 +34,7 @@
               Invite your fams
             </v-btn>
           </v-card-text>
-        </div>
+        </v-col>
       </v-card>
     </v-row>
     <v-row no-gutters class="flex-row-reverse">
@@ -53,7 +53,7 @@
         "
         min-height="420px"
       >
-        <div class="ma-12">
+        <v-col cols="12" class="ma-12">
           <v-card-title class="text-h4 font-weight-bold">
             <span>
               <v-icon x-large color="primary"> mdi-flash </v-icon>
@@ -71,7 +71,7 @@
               1, 2 and 3 Boom
             </v-btn>
           </v-card-text>
-        </div>
+        </v-col>
       </v-card>
     </v-row>
     <v-row no-gutters>
@@ -91,7 +91,7 @@
         "
         min-height="420px"
       >
-        <div class="ma-12">
+        <v-col cols="12" class="ma-12">
           <v-card-title class="text-h4 font-weight-bold">
             <span>
               <v-icon x-large color="primary"> mdi-all-inclusive </v-icon>
@@ -109,7 +109,7 @@
               Relax, We'll help you to choose
             </v-btn>
           </v-card-text>
-        </div>
+        </v-col>
       </v-card>
     </v-row>
   </v-col>

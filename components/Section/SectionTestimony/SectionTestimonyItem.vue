@@ -1,5 +1,4 @@
 <template>
-  <v-scale-transition :key="data.id" origin="center center">
     <v-col cols="12" md="6" lg="4" class="py-4">
       <v-list-item three-line dark>
         <v-list-item-avatar size="60">
@@ -30,7 +29,6 @@
         </v-list-item-content>
       </v-list-item>
     </v-col>
-  </v-scale-transition>
 </template>
 
 <script>
