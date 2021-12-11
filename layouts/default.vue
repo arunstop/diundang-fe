@@ -40,11 +40,11 @@
         mandatory
         active-class="accent"
         >
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Home </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Services </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Testimony </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Portofolio </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Contact Us </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#service"> Services </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#testimony"> Testimony </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#pricing"> Pricing</v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#portofolio"> Portofolio </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#contact"> Contact Us </v-chip>
         </v-chip-group>
       </div>
       <v-spacer />
