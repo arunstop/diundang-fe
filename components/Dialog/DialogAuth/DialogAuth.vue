@@ -21,7 +21,7 @@
         Back
       </v-btn>
 
-      <v-card-text>
+      <v-card-text class="dng-dialog-auth-content">
         <v-slide-y-reverse-transition
           class="row no-gutters justify-center align-center"
           group
@@ -57,6 +57,11 @@ export default {
   mounted() {
     this.$nuxt.$on('toggle.auth.form', () => {
       this.showRegister = !this.showRegister
+      document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
     })
   },
   methods: {
@@ -74,8 +79,8 @@ export default {
 .v-overlay--active {
   /* background-image: url('~/assets/img/blur-overlay1.png'); */
   /* background-size: cover; */
-    
-    filter: blur(4px);
+
+  filter: blur(4px);
 }
 
 .dng-dialog-auth-btn-close {
