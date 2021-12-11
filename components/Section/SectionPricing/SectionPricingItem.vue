@@ -16,7 +16,7 @@
       <v-card-text class="pa-0 elevation-0">
         <v-list tile class="pa-0 rounded-lg">
           <template v-for="(feature, index) in data.featureList">
-            <v-list-item :key="index" link>
+            <v-list-item :key="index">
               <v-list-item-title class="d-flex align-center justify-center">
                 <div>{{ feature.label }}</div>
                 <v-icon v-if="feature.isOn" color="success"> mdi-check </v-icon>

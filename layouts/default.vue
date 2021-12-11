@@ -41,7 +41,8 @@
         Menu
       </v-btn>
     </v-app-bar>
-    <v-main :class="onDialogMode() ? 'dng-app-blur' :''">
+    <v-main>
+    <!-- <v-main :class="onDialogMode() ? 'dng-app-blur' :''"> -->
       <v-container>
         <Nuxt />
       </v-container>
@@ -126,8 +127,8 @@ html {
   max-width: 100vw !important;
 }
 
-.dng-app-blur .container{
-  /* -webkit-filter: blur(4px);
-  filter: blur(4px); */
-}
+/* .dng-app-blur .container{
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+} */
 </style>

@@ -16,7 +16,12 @@
     <!-- <v-row class="mb-6" no-gutters>
       
     </v-row> -->
-    <v-row v-if="!maxData" no-gutters justify="center" @click="loadMore(11)">
+    <v-row
+      v-if="!maxData"
+      no-gutters
+      justify="center"
+      @click="apiGetComments()"
+    >
       <v-btn
         outlined
         class="rounded-lg"
@@ -35,33 +40,47 @@ export default {
     testList: [],
     maxData: false,
     isSeeMoreLoading: false,
+    page: 1,
+    perPage: 11,
   }),
   mounted() {
-    this.loadMore(11, 0)
+    // this.loadMore(11, 0)
+    this.apiGetComments()
   },
   methods: {
-    loadMore(qty, delay = 121) {
+    loadMore(commentList, delay = 121) {
+      // if first page, no need to add delay
+      if (this.page === 1) delay = 0
       this.isSeeMoreLoading = true
-      for (let i = 0; i < qty; i++) {
+      commentList.forEach((comment, idx) => {
         setTimeout(() => {
-          if (i === qty - 1) {
+          // set loading to false if it is the last data
+          if (idx === commentList.length - 1) {
             this.isSeeMoreLoading = false
           }
           this.testList.push({
-            id: Math.random() * Math.random(),
+            id: comment.id,
             img: 'https://i.pravatar.cc/' + Math.floor(Math.random() * 79) + 1,
-            name: 'Dani Daniela',
-            comment: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          quisquam nobis, minus veritatis molestiae nostrum dignissimos ratione
-          facere rerum adipisci deleniti quas! Facere totam dolorum fugiat
-          voluptates tempore. Nobis, ex.`,
+            name: comment.name.split(' ').slice(0, 2).toString().replaceAll(',',' '),
+            comment: comment.body,
           })
-        }, i * delay)
-      }
+        }, idx * delay)
+      })
 
       if (this.testList.length > 33) {
         this.maxData = true
       }
+    },
+    apiGetComments() {
+      // GET COMMENTS
+      this.$API_DUMMY.getComments((err, data) => {
+        if (err) return console.log(err)
+        const start = (this.page - 1) * this.perPage + 1
+        const end = start + this.perPage
+        const commentList = data.slice(start, end)
+        this.loadMore(commentList)
+        this.page += 1
+      })
     },
   },
 }
