@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    class="dng-btn-scroll-top mb-3 me-6 rounded-pill white--text"
+    class="dng-btn-scroll-top mb-3 me-4 me-sm-6 rounded-pill white--text"
     color="accent"
     large
     @click="scrollTop"

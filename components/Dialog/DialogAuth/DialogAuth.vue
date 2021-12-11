@@ -22,14 +22,13 @@
       </v-btn>
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
-        <v-slide-y-reverse-transition
-          class="row no-gutters justify-center align-center ma-6"
+        <v-scroll-y-reverse-transition
+          class="row no-gutters justify-center align-center mx-6"
           group
-          hide-on-leave
         >
           <DialogAuthLogin v-if="!showRegister" :key="`DialogAuthLogin`" />
           <DialogAuthRegister v-if="showRegister" :key="`DialogAuthRegister`" />
-        </v-slide-y-reverse-transition>
+        </v-scroll-y-reverse-transition>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -56,12 +55,13 @@ export default {
   },
   mounted() {
     this.$nuxt.$on('toggle.auth.form', () => {
-      this.showRegister = !this.showRegister
+      // scroll to top
       document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth',
       })
+      this.showRegister = !this.showRegister
     })
   },
   methods: {
@@ -76,12 +76,6 @@ export default {
 </script>
 
 <style>
-.v-overlay--active {
-  /* background-image: url('~/assets/img/blur-overlay1.png'); */
-  /* background-size: cover; */
-
-  filter: blur(4px);
-}
 
 .dng-dialog-auth-btn-close {
   position: absolute;

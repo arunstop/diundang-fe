@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" md="10" class="d-flex flex-column px-6">
+  <v-col cols="12" md="10" class="d-flex flex-column pa-6">
     <SectionTitle class="mb-6" :title="`Register`" :color="`secondary`" />
     <v-text-field
       prepend-inner-icon="mdi-at"

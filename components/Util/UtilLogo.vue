@@ -3,7 +3,7 @@
     <v-btn
       outlined
       color="primary"
-      class="dng-btn-logo font-weight-black text-h6 rounded-pill py-4"
+      class="dng-btn-logo font-weight-black text-h6 rounded-pill"
       style="letter-spacing: 4px !important; border-width: medium !important"
     >
       DIUNDANG.
@@ -16,6 +16,11 @@ export default {}
 </script>
 
 <style>
+.v-toolbar__content{
+  height:64px !important;
+}
+
+
 .dng-btn-logo{
   background-color: aliceblue;
 }

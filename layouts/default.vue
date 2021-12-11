@@ -34,7 +34,19 @@
       class="dng-header elevation-0 transparent pe-2"
       dark
     >
-      <UtilLogo />
+      <div class="d-flex justify-center align-center">
+        <UtilLogo />
+        <v-chip-group class="d-none d-md-flex justify-center align-center ps-1"
+        mandatory
+        active-class="accent"
+        >
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Home </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Services </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Testimony </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Portofolio </v-chip>
+          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link> Contact Us </v-chip>
+        </v-chip-group>
+      </div>
       <v-spacer />
       <v-btn color="primary" @click.stop="drawer = !drawer">
         <v-icon left> mdi-menu </v-icon>
@@ -42,7 +54,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-    <!-- <v-main :class="onDialogMode() ? 'dng-app-blur' :''"> -->
+      <!-- <v-main :class="onDialogMode() ? 'dng-app-blur' :''"> -->
       <v-container>
         <Nuxt />
       </v-container>
@@ -51,12 +63,12 @@
     <v-slide-y-reverse-transition origin="center center">
       <UtilBtnScrollTop v-if="scrolled" />
     </v-slide-y-reverse-transition>
-    <DialogList/>
+    <DialogList />
   </v-app>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -82,8 +94,8 @@ export default {
       title: 'Vuetify.js',
     }
   },
-  computed:{
-    ...mapGetters('ui/ui', ['onDialogMode'])
+  computed: {
+    ...mapGetters('ui/ui', ['onDialogMode']),
   },
   mounted() {
     // indicate whether main container is scrolled
@@ -101,9 +113,13 @@ export default {
 </script>
 <style>
 
+.dng-menu-item{
+  font-weight: bold !important;
+  letter-spacing: 1px;
+}
 
 /* .dng-app-blur .container{
-  -webkit-filter: blur(4px);
-  filter: blur(4px);
+  -webkit-filter: blur(24px);
+  filter: blur(24px);
 } */
 </style>
