@@ -9,10 +9,10 @@
                 align="center"
                 justify="center"
               >
-                <v-progress-circular
+                <!-- <v-progress-circular
                   indeterminate
                   color="white"
-                ></v-progress-circular>
+                ></v-progress-circular> -->
               </v-row>
             </template>
           </v-img>

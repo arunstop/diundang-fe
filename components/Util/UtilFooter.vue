@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="contact" class="dng-footer d-flex justify-center" color="grey darken-4" dark>
+  <v-footer id="contact" class="dng-section dng-footer d-flex justify-center" color="grey darken-4" dark>
     <v-col cols="12" class="d-flex flex-column justify-center align-center text-center pa-6">
       <UtilIcon class="mb-12" />
       <v-text-field

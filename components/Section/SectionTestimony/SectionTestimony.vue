@@ -1,12 +1,12 @@
 <template>
-  <v-col cols="12" class="secondary pa-lg-12 pa-md-12 pa-6">
+  <v-col cols="12" class="dng-section secondary pa-lg-12 pa-md-12 pa-6">
     <v-row class="mb-6" no-gutters justify="center">
       <SectionTitle
         :title="`Hear what people have experienced`"
         :color="`white`"
       />
     </v-row>
-    <transition-group class="row no-gutters" name="fade-transition">
+    <transition-group class="row no-gutters justify-center" name="fade-transition">
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"
