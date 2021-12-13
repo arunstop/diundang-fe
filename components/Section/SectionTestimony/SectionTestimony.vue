@@ -6,7 +6,7 @@
         :color="`white`"
       />
     </v-row>
-    <transition-group class="row no-gutters justify-center" name="fade-transition">
+    <transition-group class="row no-gutters justify-center" >
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"

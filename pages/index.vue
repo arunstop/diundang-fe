@@ -32,7 +32,8 @@ export default {
     })
 
     const intersectionHandler = (entry) => {
-      this.$router.push(`#${entry.target.id}`)
+      // this.$router.push(`#${entry.target.id}`)
+      this.$nuxt.$emit('select-section', entry.target.id)
     }
   },
 }

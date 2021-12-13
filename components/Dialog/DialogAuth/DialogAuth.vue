@@ -54,7 +54,7 @@ export default {
     },
   },
   mounted() {
-    this.$nuxt.$on('toggle.auth.form', () => {
+    this.$nuxt.$on('toggle-auth-form', () => {
       // scroll to top
       document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
         top: 0,

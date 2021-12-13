@@ -19,7 +19,7 @@
 
     <div class="my-4 mx-auto font-weight-bold grey--text">No account?</div>
 
-    <v-btn rounded color="secondary" x-large outlined @click="$nuxt.$emit('toggle.auth.form')"> Register </v-btn>
+    <v-btn rounded color="secondary" x-large outlined @click="$nuxt.$emit('toggle-auth-form')"> Register </v-btn>
 
     <div class="my-4 mx-auto font-weight-bold grey--text">Or use socials</div>
 

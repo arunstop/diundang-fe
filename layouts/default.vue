@@ -36,15 +36,21 @@
     >
       <div class="d-flex justify-center align-center">
         <UtilLogo />
-        <v-chip-group class="d-none d-md-flex justify-center align-center ps-1"
-        mandatory
-        active-class="accent"
+        <v-chip-group
+          v-model="sectionMenu"
+          class="d-none d-md-flex justify-center align-center ps-1"
+          active-class="accent"
         >
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#service"> Services </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#testimony"> Testimony </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#pricing"> Pricing</v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#portofolio"> Portofolio </v-chip>
-          <v-chip class="dng-menu-item mx-1 px-6 elevation-2" link href="#contact"> Contact Us </v-chip>
+          <v-chip
+            v-for="section in sectionMenuList"
+            :key="section.target"
+            :value="section.target"
+            class="dng-menu-item mx-1 px-6 elevation-2"
+            link
+            :href="`#${section.target}`"
+          >
+            {{ section.label }}
+          </v-chip>
         </v-chip-group>
       </div>
       <v-spacer />
@@ -92,12 +98,26 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
+      sectionMenuList: [
+        { target: 'service', label: 'Service' },
+        { target: 'testimony', label: 'Testimony' },
+        { target: 'pricing', label: 'Pricing' },
+        { target: 'portofolio', label: 'Portofolio' },
+        { target: 'contact', label: 'Contact' },
+      ],
+      sectionMenu: '',
     }
   },
   computed: {
     ...mapGetters('ui/ui', ['onDialogMode']),
   },
   mounted() {
+    // select section event
+    this.$nuxt.$on('select-section', (id) => {
+      this.sectionMenu = id
+      this.$router.push(`#${id}`)
+    })
+
     // indicate whether main container is scrolled
     const dngApp = document.getElementsByClassName('dng-app')[0]
     // console.log(dngApp)
@@ -112,8 +132,7 @@ export default {
 }
 </script>
 <style>
-
-.dng-menu-item{
+.dng-menu-item {
   font-weight: bold !important;
   letter-spacing: 1px;
 }

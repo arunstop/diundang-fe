@@ -43,7 +43,7 @@
     <v-btn rounded color="secondary" x-large> Register </v-btn>
         <div class="my-4 mx-auto font-weight-bold grey--text">Already have one?</div>
 
-    <v-btn rounded color="secondary" x-large outlined @click="$nuxt.$emit('toggle.auth.form')"> Login </v-btn>
+    <v-btn rounded color="secondary" x-large outlined @click="$nuxt.$emit('toggle-auth-form')"> Login </v-btn>
 
     <div class="my-4 mx-auto font-weight-bold grey--text">Or use socials</div>
 
