@@ -22,13 +22,13 @@
       </v-btn>
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
-        <v-scroll-y-reverse-transition
+        <v-fade-transition
           class="row no-gutters justify-center align-center mx-6"
           group
         >
           <DialogAuthLogin v-if="!showRegister" :key="`DialogAuthLogin`" />
           <DialogAuthRegister v-if="showRegister" :key="`DialogAuthRegister`" />
-        </v-scroll-y-reverse-transition>
+        </v-fade-transition>
       </v-card-text>
     </v-card>
   </v-dialog>

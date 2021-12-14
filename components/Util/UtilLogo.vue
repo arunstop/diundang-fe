@@ -6,7 +6,7 @@
       class="dng-btn-logo font-weight-black text-h6 rounded-pill"
       style="letter-spacing: 4px !important; border-width: medium !important"
       link
-      href="#home"
+      @click="scrollTop()"
     >
       DIUNDANG.
     </v-btn>
@@ -14,7 +14,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods:{
+    scrollTop(){
+      document.getElementsByClassName('dng-app')[0].scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
+  }
+}
 </script>
 
 <style>
