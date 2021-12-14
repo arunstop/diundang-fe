@@ -47,7 +47,7 @@
             :value="section.target"
             class="dng-menu-item mx-1 px-6 elevation-2"
             link
-            :href="`#${section.target}`"
+            @click="scrollTo(section.target)"
           >
             {{ section.label }}
           </v-chip>
@@ -112,12 +112,6 @@ export default {
     ...mapGetters('ui/ui', ['onDialogMode']),
   },
   mounted() {
-    // select section event
-    this.$nuxt.$on('select-section', (id) => {
-      this.sectionMenu = id
-      this.$router.push(`#${id}`)
-    })
-
     // indicate whether main container is scrolled
     const dngApp = document.getElementsByClassName('dng-app')[0]
     // console.log(dngApp)
@@ -128,6 +122,28 @@ export default {
         this.scrolled = false
       }
     }
+
+    // select section event
+    this.$nuxt.$on('select-section', (id) => {
+      this.sectionMenu = id
+      // scroll to element
+      // document.getElementById(id)
+      // this.$router.push(`#${id}`)
+
+      // const container = this.$el.querySelector(`#${id}`)
+      // container.scrollTop = container.scrollHeight
+    })
+  },
+  methods: {
+    scrollTo(id) {
+      // console.log(document.getElementById(`${id}`))
+      if(!document.getElementById(`${id}`)) return
+      this.$vuetify.goTo(`#${id}`, {
+        container: document.getElementsByClassName('dng-app')[0],
+        offset : -100,
+        duration: 0,
+      })
+    },
   },
 }
 </script>
