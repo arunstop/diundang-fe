@@ -11,18 +11,28 @@
       mobile-breakpoint="720"
     >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item-group v-model="sectionModel" active-class="accent">
+          <v-list-item
+            v-for="section in sectionMenuList"
+            :key="section.target"
+            :value="section.target"
+            link
+            @click="scrollTo(section.target)"
+          >
+            <v-list-item-action>
+              <v-icon>{{ section.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="section.label" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+        <v-list-item link @click="drawer = !drawer">
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>mdi-close-thick</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="'Close'" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -37,12 +47,12 @@
       <div class="d-flex justify-center align-center">
         <UtilLogo />
         <v-chip-group
-          v-model="sectionMenu"
+          v-model="sectionModel"
           class="d-none d-md-flex justify-center align-center ps-1"
           active-class="accent"
         >
           <v-chip
-            v-for="section in sectionMenuList"
+            v-for="section in sectionMenuListChip"
             :key="section.target"
             :value="section.target"
             class="dng-menu-item mx-1 px-6 elevation-2"
@@ -54,7 +64,7 @@
         </v-chip-group>
       </div>
       <v-spacer />
-      <v-btn color="primary" @click.stop="drawer = !drawer">
+      <v-btn class="d-md-none" color="primary" @click.stop="drawer = !drawer">
         <v-icon left> mdi-menu </v-icon>
         Menu
       </v-btn>
@@ -74,7 +84,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import _ from 'lodash'
+import { mapGetters, mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -98,18 +109,22 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
-      sectionMenuList: [
-        { target: 'service', label: 'Service' },
-        { target: 'testimony', label: 'Testimony' },
-        { target: 'pricing', label: 'Pricing' },
-        { target: 'portofolio', label: 'Portofolio' },
-        { target: 'contact', label: 'Contact' },
-      ],
-      sectionMenu: '',
     }
   },
   computed: {
     ...mapGetters('ui/ui', ['onDialogMode']),
+    ...mapState('ui/ui', ['sectionMenuList', 'sectionActive']),
+    sectionModel: {
+      get() {
+        return this.sectionActive
+      },
+      set(id) {
+        this.$store.dispatch('ui/ui/setSectionActive', { id })
+      },
+    },
+    sectionMenuListChip() {
+      return _.filter(this.sectionMenuList, (e) => e.target !== 'home')
+    },
   },
   mounted() {
     // indicate whether main container is scrolled
@@ -125,7 +140,7 @@ export default {
 
     // select section event
     this.$nuxt.$on('select-section', (id) => {
-      this.sectionMenu = id
+      this.sectionModel = id
       // scroll to element
       // document.getElementById(id)
       // this.$router.push(`#${id}`)
@@ -137,12 +152,14 @@ export default {
   methods: {
     scrollTo(id) {
       // console.log(document.getElementById(`${id}`))
-      if(!document.getElementById(`${id}`)) return
+      if (!document.getElementById(`${id}`)) return
       this.$vuetify.goTo(`#${id}`, {
         container: document.getElementsByClassName('dng-app')[0],
-        offset : -100,
+        offset: -55,
         duration: 0,
       })
+      // close the drawer after scroll if it is active
+      if (this.drawer) this.drawer = false
     },
   },
 }

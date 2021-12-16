@@ -35,7 +35,7 @@ export default {
     }),
   methods: {
     showAuthDialog() {
-      console.log(this.$store)
+      // console.log(this.$store)
       this.$store.dispatch('ui/ui/toggleDialog', 
       {
         type: 'DIALOG_AUTH',

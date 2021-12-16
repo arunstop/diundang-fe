@@ -4,6 +4,7 @@
     <SectionService id="service" />
     <SectionTestimony id="testimony" />
     <SectionPricing id="pricing" />
+    <SectionPortofolio id="portofolio" />
   </v-row>
 </template>
 <script>

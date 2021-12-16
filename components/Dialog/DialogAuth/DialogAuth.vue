@@ -22,13 +22,13 @@
       </v-btn>
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
-        <v-fade-transition
+        <div
           class="row no-gutters justify-center align-center mx-6"
           group
         >
           <DialogAuthLogin v-if="!showRegister" :key="`DialogAuthLogin`" />
           <DialogAuthRegister v-if="showRegister" :key="`DialogAuthRegister`" />
-        </v-fade-transition>
+        </div>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -55,13 +55,14 @@ export default {
   },
   mounted() {
     this.$nuxt.$on('toggle-auth-form', () => {
+      this.showRegister = !this.showRegister
+
       // scroll to top
       document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth',
       })
-      this.showRegister = !this.showRegister
     })
   },
   methods: {
