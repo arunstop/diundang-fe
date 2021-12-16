@@ -11,7 +11,7 @@
       mobile-breakpoint="720"
     >
       <v-list>
-        <v-list-item-group v-model="sectionModel" active-class="accent">
+        <v-list-item-group v-model="sectionModel" mandatory color="accent">
           <v-list-item
             v-for="section in sectionMenuList"
             :key="section.target"
@@ -27,7 +27,7 @@
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
-        <v-list-item link @click="drawer = !drawer">
+        <v-list-item link :input-value="true" color="error" @click="drawer = !drawer">
           <v-list-item-action>
             <v-icon>mdi-close-thick</v-icon>
           </v-list-item-action>
