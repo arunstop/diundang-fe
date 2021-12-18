@@ -60,3 +60,7 @@ html {
   /* background: #000000; */
 }
 
+.position-absolute{
+  position: absolute !important;
+}
+
