@@ -23,6 +23,15 @@ export default ({ $axios }, inject) => {
                 })
                 .catch(callback)
             // console.log(api)
+        },
+        getPhotos: (callback) => {
+            api.get('/photos', {
+                params: {
+                    albumId: '2'
+                }
+            })
+                .then(response => callback(null, response.data))
+                .catch(callback)
         }
 
     })

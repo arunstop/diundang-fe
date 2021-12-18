@@ -26,6 +26,8 @@
             <v-divider
               v-if="index < data.featureList.length - 1"
               :key="data.title+''+index"
+              class="mx-auto"
+            style="width:12%"
             ></v-divider>
           </template>
         </v-list>
