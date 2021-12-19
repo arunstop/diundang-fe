@@ -27,8 +27,9 @@
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
         <div class="row no-gutters justify-center align-center mx-6" group>
-          <DialogAuthLogin v-if="!showRegister" :key="`DialogAuthLogin`" />
-          <DialogAuthRegister v-if="showRegister" :key="`DialogAuthRegister`" />
+          <DialogAuthLogin v-if="activeForm === 'LOGIN'" :key="`DialogAuthLogin`" />
+          <DialogAuthRegister v-if="activeForm === 'REGISTER'" :key="`DialogAuthRegister`" />
+          <DialogAuthResetPw v-if="activeForm === 'RESETPW'" :key="`DialogAuthRegister`" />
         </div>
       </v-card-text>
     </v-card>
@@ -42,7 +43,7 @@ export default {
     val: Boolean,
   },
   data: () => ({
-    showRegister: false,
+    activeForm: 'LOGIN',
     isLoading:false,
     isLoadingLabel:''
   }),
@@ -57,8 +58,8 @@ export default {
     },
   },
   mounted() {
-    this.$nuxt.$on('dialog-auth-toggle-form', () => {
-      this.showRegister = !this.showRegister
+    this.$nuxt.$on('dialog-auth-toggle-form', (payload) => {
+      this.activeForm = payload.name
 
       // scroll to top
       this.scrollTop()

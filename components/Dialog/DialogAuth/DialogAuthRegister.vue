@@ -70,7 +70,7 @@
       <v-btn rounded color="secondary" x-large type="submit"> Register </v-btn>
       <div class="my-4 mx-auto font-weight-bold grey--text text-center">
         Already have one? or
-        <a class="text-decoration-underline">Forget your password?</a>
+        <a class="text-decoration-underline" @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'RESETPW'})">Forgot your password?</a>
       </div>
 
       <v-btn
@@ -78,7 +78,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('dialog-auth-toggle-form')"
+        @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'LOGIN'})"
       >
         Login
       </v-btn>
