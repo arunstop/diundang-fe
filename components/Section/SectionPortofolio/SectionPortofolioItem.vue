@@ -1,7 +1,7 @@
 <template>
   <v-col class="dng-section-portofolio-item" cols="12" sm="6" md="4" lg="3">
     <v-hover v-slot="{ hover }">
-      <v-card class="ma-4 wrapper" rounded="xl" outlined link height="300">
+      <v-card class="ma-4 wrapper" rounded="xl" outlined link height="300" color="grey">
         <v-img class="dng-animation-scale fill-height" :src="`https://picsum.photos/id/${data.id}/200/300`" />
         <!-- <v-row > -->
         <v-slide-y-reverse-transition>

@@ -7,6 +7,15 @@
       @submit.prevent="execAuthRegister"
     >
       <SectionTitle class="mb-6" :title="`Register`" :color="`secondary`" />
+      <v-alert
+        v-if="isError"
+        text
+        type="error"
+        icon="mdi-alert-circle"
+        border="left"
+      >
+        Error, because of something happened
+      </v-alert>
       <v-text-field
         v-model="emailModel"
         prepend-inner-icon="mdi-at"
@@ -59,8 +68,9 @@
       >
       </v-text-field>
       <v-btn rounded color="secondary" x-large type="submit"> Register </v-btn>
-      <div class="my-4 mx-auto font-weight-bold grey--text">
-        Already have one?
+      <div class="my-4 mx-auto font-weight-bold grey--text text-center">
+        Already have one? or
+        <a class="text-decoration-underline">Forget your password?</a>
       </div>
 
       <v-btn
@@ -68,7 +78,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('toggle-auth-form')"
+        @click="$nuxt.$emit('dialog-auth-toggle-form')"
       >
         Login
       </v-btn>
@@ -98,6 +108,7 @@ export default {
       pwModel: '',
       cpwModel: '',
       phoneModel: '',
+      isError: false,
     }
   },
   computed: {},
@@ -105,7 +116,18 @@ export default {
     execAuthRegister() {
       this.$refs.formAuthRegister.validate()
       if (this.isFormAuthRegisterValid) {
-        alert(123)
+        this.$nuxt.$emit('dialog-auth-set-is-loading', {
+          val: true,
+          message: 'Registering your information...',
+        })
+        setTimeout(() => {
+          this.$nuxt.$emit('dialog-auth-scroll-top')
+          this.isError = true
+          this.$nuxt.$emit('dialog-auth-set-is-loading', {
+            val: false,
+            // message: 'Logging into your account',
+          })
+        }, 2123)
       }
     },
   },

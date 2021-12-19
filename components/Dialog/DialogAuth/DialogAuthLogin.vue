@@ -7,8 +7,17 @@
       @submit.prevent="execAuthLogin"
     >
       <SectionTitle class="mb-6" :title="`Login`" :color="`secondary`" />
+      <v-alert
+        v-if="isError"
+        text
+        type="error"
+        icon="mdi-alert-circle"
+        border="left"
+      >
+        Error, because of something happened
+      </v-alert>
       <v-text-field
-      v-model="emailModel"
+        v-model="emailModel"
         prepend-inner-icon="mdi-at"
         outlined
         label="Email"
@@ -17,7 +26,7 @@
       >
       </v-text-field>
       <v-text-field
-      v-model="pwModel"
+        v-model="pwModel"
         prepend-inner-icon="mdi-lock"
         outlined
         label="Password"
@@ -27,14 +36,17 @@
       </v-text-field>
       <v-btn rounded color="secondary" x-large type="submit"> Login </v-btn>
 
-      <div class="my-4 mx-auto font-weight-bold grey--text">No account?</div>
+      <div class="my-4 mx-auto font-weight-bold grey--text text-center">
+        No account? or
+        <a class="text-decoration-underline">Forget your password?</a>
+      </div>
 
       <v-btn
         rounded
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('toggle-auth-form')"
+        @click="$nuxt.$emit('dialog-auth-toggle-form')"
       >
         Register
       </v-btn>
@@ -61,6 +73,7 @@ export default {
       isFormAuthLoginValid: false,
       emailModel: '',
       pwModel: '',
+      isError: false,
     }
   },
   computed: {},
@@ -68,7 +81,18 @@ export default {
     execAuthLogin() {
       this.$refs.formAuthLogin.validate()
       if (this.isFormAuthLoginValid) {
-        alert(123)
+        this.$nuxt.$emit('dialog-auth-set-is-loading', {
+          val: true,
+          message: 'Logging into your account...',
+        })
+        setTimeout(() => {
+          this.$nuxt.$emit('dialog-auth-scroll-top')
+          this.isError = true
+          this.$nuxt.$emit('dialog-auth-set-is-loading', {
+            val: false,
+            // message: 'Logging into your account',
+          })
+        }, 2123)
       }
     },
   },

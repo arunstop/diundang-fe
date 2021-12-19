@@ -5,14 +5,18 @@
     scrollable
     :fullscreen="$vuetify.breakpoint.xs"
     transition="slide-y-reverse-transition"
+    :persistent="isLoading"
   >
-    <v-card class="rounded-xl py-6">
+    <v-card class="rounded-xl py-6 overflow-hidden">
+      <v-slide-y-reverse-transition class="position-absolute" origin="center center">
+        <UtilLoadingOverlay v-if="isLoading" :label="isLoadingLabel"/>
+      </v-slide-y-reverse-transition>
       <v-btn
         class="
           dng-dialog-auth-btn-close
-          rounded-xl
           font-weight-black
           secondary--text
+          rounded-xl
         "
         elevation="0"
         @click="hideDialog()"
@@ -22,10 +26,7 @@
       </v-btn>
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
-        <div
-          class="row no-gutters justify-center align-center mx-6"
-          group
-        >
+        <div class="row no-gutters justify-center align-center mx-6" group>
           <DialogAuthLogin v-if="!showRegister" :key="`DialogAuthLogin`" />
           <DialogAuthRegister v-if="showRegister" :key="`DialogAuthRegister`" />
         </div>
@@ -42,6 +43,8 @@ export default {
   },
   data: () => ({
     showRegister: false,
+    isLoading:false,
+    isLoadingLabel:''
   }),
   computed: {
     show: {
@@ -54,15 +57,21 @@ export default {
     },
   },
   mounted() {
-    this.$nuxt.$on('toggle-auth-form', () => {
+    this.$nuxt.$on('dialog-auth-toggle-form', () => {
       this.showRegister = !this.showRegister
 
       // scroll to top
-      document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      })
+      this.scrollTop()
+    })
+
+    this.$nuxt.$on('dialog-auth-scroll-top', ()=>{
+      this.scrollTop()
+    })
+
+    this.$nuxt.$on('dialog-auth-set-is-loading', (payload) => {
+      if(payload.val===false) this.isLoading = false
+      this.isLoading = payload.val
+      this.isLoadingLabel = payload.message
     })
   },
   methods: {
@@ -72,16 +81,22 @@ export default {
         value: false,
       })
     },
+    scrollTop(){
+      document.getElementsByClassName('dng-dialog-auth-content')[0].scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
   },
 }
 </script>
 
 <style>
-
 .dng-dialog-auth-btn-close {
   position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
+  left: 2px;
+  top: 2px;
+  z-index: 1;
 }
 </style>
