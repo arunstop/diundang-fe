@@ -7,7 +7,7 @@
       color="accent"
     >
       <v-progress-circular indeterminate color="white" width="9" size="90" />
-      <div class="mt-4 text-h5 font-weight-bold" v-text="label" />
+      <div class="mt-4 text-h6 font-weight-bold" v-text="label" />
     </v-sheet>
   </v-overlay>
 </template>

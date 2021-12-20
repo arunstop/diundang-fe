@@ -11,7 +11,11 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Create invitations for your events such as: wedding, party, graduation and other events here'
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -68,7 +72,7 @@ export default {
       },
       // dark: true,
       themes: {
-        light:{
+        light: {
           primary: colors.indigo.base,
           accent: colors.teal.base,
           secondary: colors.purple.base,

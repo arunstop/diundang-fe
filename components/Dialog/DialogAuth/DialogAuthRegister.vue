@@ -127,8 +127,11 @@ export default {
             val: false,
             // message: 'Logging into your account',
           })
+          // this.$refs.formAuthRegister.reset()
         }, 2123)
+      return
       }
+      this.$nuxt.$emit('dialog-auth-scroll-top')
     },
   },
 }

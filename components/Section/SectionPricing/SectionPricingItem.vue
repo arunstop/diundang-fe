@@ -1,6 +1,6 @@
 <template>
   <v-col cols="12" md="6" lg="4" sm="6" class="pa-6 pa-sm-6">
-    <v-card class="rounded-xl transparent elevation-6">
+    <v-card class="rounded-xl" outlined>
       <v-card-title
         class=" v-btn--outlined
           dng-section-pricing-item-header
@@ -13,7 +13,7 @@
       >
         {{ data.title }}
       </v-card-title>
-      <v-card-text class="pa-0 elevation-0">
+      <v-card-text class="pa-0">
         <v-list tile class="pa-0 rounded-lg">
           <template v-for="(feature, index) in data.featureList">
             <v-list-item :key="index">

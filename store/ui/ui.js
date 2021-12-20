@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const state = () => ({
     dialogList: [],
     sectionMenuList: [
@@ -8,7 +10,9 @@ export const state = () => ({
         { target: 'portofolio', label: 'Portofolio', icon: 'mdi-text-box-multiple' },
         { target: 'contact', label: 'Contact', icon: 'mdi-phone' },
     ],
-    sectionActive: 'home'
+    sectionActive: 'home',
+    testimonyList: [],
+    testimonyDetailId: ''
 })
 
 export const getters = {
@@ -27,8 +31,16 @@ export const mutations = {
         }
         state.dialogList.push(payload)
     },
-    SET_SECTION_ACTIVE(state,id){
+    SET_SECTION_ACTIVE(state, id) {
         state.sectionActive = id
+    },
+    SET_TESTIMONY_LIST(state, list) {
+state.testimonyList = _.concat(state.testimonyList,list)
+console.log(state.testimonyList)
+
+    },
+    SET_TESTIMONY_DETAIL_ID(state, id) {
+        state.testimonyDetailId = id
     }
 }
 
@@ -37,7 +49,13 @@ export const actions = {
         // payload = {type,value}
         commit('TOGGLE_DIALOG', payload)
     },
-    setSectionActive({commit},payload){
+    setTestimonyList({ commit }, payload) {
+        commit('SET_TESTIMONY_LIST', payload.list)
+    },
+    setTestimonyDetailId({ commit }, payload) {
+        commit('SET_TESTIMONY_DETAIL_ID', payload.id)
+    },
+    setSectionActive({ commit }, payload) {
         commit('SET_SECTION_ACTIVE', payload.id)
     }
 }

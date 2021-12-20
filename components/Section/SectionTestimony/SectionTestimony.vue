@@ -6,7 +6,7 @@
         :color="`white`"
       />
     </v-row>
-    <transition-group class="row no-gutters justify-center" >
+    <transition-group class="row no-gutters justify-center">
       <SectionTestimonyItem
         v-for="test in testList"
         :key="test.id"
@@ -57,12 +57,7 @@ export default {
           if (idx === commentList.length - 1) {
             this.isSeeMoreLoading = false
           }
-          this.testList.push({
-            id: comment.id,
-            img: 'https://i.pravatar.cc/' + Math.floor(Math.random() * 79) + 1,
-            name: comment.name.split(' ').slice(0, 2).toString().replaceAll(',',' '),
-            comment: comment.body,
-          })
+          this.testList.push(this.getCommentProps(comment))
         }, idx * delay)
       })
 
@@ -71,7 +66,7 @@ export default {
       }
     },
     apiGetComments() {
-        this.isSeeMoreLoading = true
+      this.isSeeMoreLoading = true
 
       // GET COMMENTS
       this.$API_DUMMY.getComments((err, data) => {
@@ -79,9 +74,24 @@ export default {
         const start = (this.page - 1) * this.perPage + 1
         const end = start + this.perPage
         const commentList = data.slice(start, end)
+        this.$store.dispatch('ui/ui/setTestimonyList', {
+          list: commentList.map((comment) => this.getCommentProps(comment)),
+        })
         this.loadMore(commentList)
         this.page += 1
       })
+    },
+    getCommentProps(comment) {
+      return {
+        id: comment.id,
+        img: 'https://i.pravatar.cc/' + Math.floor(Math.random() * 79) + 1,
+        name: comment.name
+          .split(' ')
+          .slice(0, 2)
+          .toString()
+          .replaceAll(',', ' '),
+        body: comment.body,
+      }
     },
   },
 }

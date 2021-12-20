@@ -13,6 +13,8 @@
         type="error"
         icon="mdi-alert-circle"
         border="left"
+        close-icon="mdi-close-thick"
+        dismissible
       >
         Error, because of something happened
       </v-alert>
@@ -38,7 +40,11 @@
 
       <div class="my-4 mx-auto font-weight-bold grey--text text-center">
         No account? or
-        <a class="text-decoration-underline" @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'RESETPW'})">Forgot your password?</a>
+        <a
+          class="text-decoration-underline"
+          @click="$nuxt.$emit('dialog-auth-toggle-form', { name: 'RESETPW' })"
+          >Forgot your password?</a
+        >
       </div>
 
       <v-btn
@@ -46,7 +52,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'REGISTER'})"
+        @click="$nuxt.$emit('dialog-auth-toggle-form', { name: 'REGISTER' })"
       >
         Register
       </v-btn>
@@ -81,6 +87,7 @@ export default {
     execAuthLogin() {
       this.$refs.formAuthLogin.validate()
       if (this.isFormAuthLoginValid) {
+        this.isError=false
         this.$nuxt.$emit('dialog-auth-set-is-loading', {
           val: true,
           message: 'Logging into your account...',
@@ -93,7 +100,9 @@ export default {
             // message: 'Logging into your account',
           })
         }, 2123)
+        return
       }
+      this.$nuxt.$emit('dialog-auth-scroll-top')
     },
   },
 }

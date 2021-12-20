@@ -1,6 +1,7 @@
 <template>
   <div>
     <DialogAuth :val="isActive('DIALOG_AUTH')"/>
+    <SectionTestimonyDialogDetail :val="isActive('DIALOG_TESTIMONY_DETAIL')"/>
   </div>
 </template>
 

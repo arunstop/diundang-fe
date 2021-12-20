@@ -1,6 +1,6 @@
 <template>
-    <v-col cols="12" md="6" lg="4" class="py-4">
-      <v-list-item three-line dark>
+    <v-col cols="12" md="6" lg="4" class="py-4 rounded-lg">
+      <v-list-item  three-line dark link @click="showDetailDialog()">
         <v-list-item-avatar size="60">
           <v-img :src="data.img">
             <template #placeholder>
@@ -16,11 +16,11 @@
               </v-row>
             </template>
           </v-img>
-        </v-list-item-avatar>
+        </v-list-item-avatar> 
         <v-list-item-content>
           <v-list-item-subtitle class="dng-testimony-item-comment">
             <div>
-              {{ data.comment }}
+              {{ data.body }}
             </div>
           </v-list-item-subtitle>
           <v-list-item-title class="font-weight-bold text-capitalize">
@@ -36,6 +36,16 @@ export default {
   props: {
     data: { type: Object, default: () => {} },
   },
+  methods:{
+    showDetailDialog() {
+      // console.log(this.$store)
+      this.$store.dispatch('ui/ui/toggleDialog', 
+      {
+        type: 'DIALOG_TESTIMONY_DETAIL',
+        value : true
+      })
+    },
+  }
 }
 </script>
 
