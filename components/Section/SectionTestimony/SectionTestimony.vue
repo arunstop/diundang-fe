@@ -73,18 +73,19 @@ export default {
         if (err) return console.log(err)
         const start = (this.page - 1) * this.perPage + 1
         const end = start + this.perPage
-        const commentList = data.slice(start, end)
+        const commentList = data.slice(start, end).map((comment) => this.getCommentProps(comment))
         this.$store.dispatch('ui/ui/setTestimonyList', {
-          list: commentList.map((comment) => this.getCommentProps(comment)),
+          list: commentList,
         })
         this.loadMore(commentList)
+        console.log(commentList)
         this.page += 1
       })
     },
     getCommentProps(comment) {
       return {
         id: comment.id,
-        img: 'https://i.pravatar.cc/' + Math.floor(Math.random() * 79) + 1,
+        img: 'https://i.pravatar.cc/90?img=' + comment.id,
         name: comment.name
           .split(' ')
           .slice(0, 2)

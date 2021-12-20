@@ -2,7 +2,7 @@
   <div v-intersect="{onIntersect}" class="dng-section dng-section-hero col col-12">
     <v-row no-gutters>
       <v-col class="d-flex" :class="isIntersecting?'primary':''" cols="12" lg="6" md="8" sm="12">
-        <v-card class="dng-section-hero-panel my-auto rounded-xl mx-4" dark>
+        <v-card class="dng-section-hero-panel my-auto rounded-lg mx-4" dark>
           <v-card-text>
             <div class="text-h4 mb-6 font-weight-bold">Hello there!</div>
             <div class="mb-6">

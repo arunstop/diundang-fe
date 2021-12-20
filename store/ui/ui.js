@@ -35,12 +35,11 @@ export const mutations = {
         state.sectionActive = id
     },
     SET_TESTIMONY_LIST(state, list) {
-state.testimonyList = _.concat(state.testimonyList,list)
-console.log(state.testimonyList)
-
+        state.testimonyList = _.concat(state.testimonyList, list)
+        console.log(state.testimonyList)
     },
     SET_TESTIMONY_DETAIL_ID(state, id) {
-        state.testimonyDetailId = id
+        state.testimonyDetailId = 'stid'+id
     }
 }
 
@@ -48,6 +47,9 @@ export const actions = {
     toggleDialog({ commit }, payload) {
         // payload = {type,value}
         commit('TOGGLE_DIALOG', payload)
+        if (payload.style === 'DIALOG_TESTIMONY_DETAIL') {
+            this.setTestimonyDetailId({ id: payload.id })
+        }
     },
     setTestimonyList({ commit }, payload) {
         commit('SET_TESTIMONY_LIST', payload.list)
@@ -57,5 +59,5 @@ export const actions = {
     },
     setSectionActive({ commit }, payload) {
         commit('SET_SECTION_ACTIVE', payload.id)
-    }
+    },
 }

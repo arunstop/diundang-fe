@@ -1,6 +1,6 @@
 <template>
    <v-btn
-        class="
+        class="v-btn--outlined
           dng-dialog-auth-btn-close
           font-weight-black
           secondary--text
