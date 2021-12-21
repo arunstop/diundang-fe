@@ -64,7 +64,7 @@ html {
   position: absolute !important;
 }
 
-.text-wrap{
-  white-space: normal !important;
+.border-medium{
+border-width: medium !important;
 }
 

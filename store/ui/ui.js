@@ -35,8 +35,8 @@ export const mutations = {
         state.sectionActive = id
     },
     SET_TESTIMONY_LIST(state, list) {
-        state.testimonyList = _.concat(state.testimonyList, list)
-        console.log(state.testimonyList)
+        state.testimonyList = _.unionBy(state.testimonyList, list,'id')
+        // console.log(state.testimonyList)
     },
     SET_TESTIMONY_DETAIL_ID(state, id) {
         state.testimonyDetailId = 'stid'+id

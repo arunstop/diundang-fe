@@ -10,12 +10,13 @@
         :data="porto"
       />
     </transition-group>
-    <v-row v-if="!maxData" no-gutters justify="center" @click="apiGetPhotos()">
+    <v-row v-if="!maxData" no-gutters justify="center">
       <v-btn
         outlined
-        class="rounded-lg"
+        class="mt-4 rounded-lg border-medium"
         color="white"
         :loading="isSeeMoreLoading"
+         @click="apiGetPhotos()"
       >
         See More ...
       </v-btn>
@@ -72,8 +73,8 @@ export default {
           perPage = this.perPage / 2
         }
         const end = start + perPage
-        console.log(this.page)
-        console.log(start + ', ' + end)
+        // console.log(this.page)
+        // console.log(start + ', ' + end)
         const portoList = data.slice(start, end)
         this.loadMore(portoList)
         this.page += 1

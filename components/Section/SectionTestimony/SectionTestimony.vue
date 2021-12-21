@@ -20,13 +20,13 @@
       v-if="!maxData"
       no-gutters
       justify="center"
-      @click="apiGetComments()"
     >
       <v-btn
         outlined
-        class="rounded-lg"
+        class="rounded-lg border-medium"
         color="white"
         :loading="isSeeMoreLoading"
+      @click="apiGetComments()"
       >
         See More ...
       </v-btn>
@@ -78,7 +78,7 @@ export default {
           list: commentList,
         })
         this.loadMore(commentList)
-        console.log(commentList)
+        // console.log(commentList)
         this.page += 1
       })
     },

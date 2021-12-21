@@ -10,10 +10,10 @@
     <v-card class="rounded-lg">
       <UtilBtnBackDialog :action="() => hideDialog()" />
       <v-card-text class="dng-section-testimony-dialog px-0 py-6">
-        <SectionTitle class="mb-6 mx-4 mx-md-12" :title="`Testimony`" :color="`secondary`" />
+        <SectionTitle class="mx-4 mx-md-12" :title="`Testimony`" :color="`secondary`" />
 
-        <v-list>
-          <v-list-item-group v-model="testimonyDetailModel" color="accent">
+        <v-list class="my-6">
+          <v-list-item-group v-model="testimonyDetailModel" mandatory color="accent">
             <SectionTestimonyItemDetail
             v-for="testi in testimonyList"
             :key="testi.id"
@@ -21,6 +21,21 @@
           />
           </v-list-item-group>
         </v-list>
+        <v-row
+      v-if="!maxData"
+      no-gutters
+      justify="center"
+    >
+      <v-btn
+        outlined
+        class="rounded-lg font-weight-bold border-medium"
+        color="secondary"
+        :loading="isLoading"
+      @click="apiGetComments()"
+      >
+        See More ...
+      </v-btn>
+    </v-row>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -33,6 +48,7 @@ export default {
     val: Boolean,
   },
   data: () => ({
+    maxData: false,
     isLoading: false,
     isLoadingLabel: '',
     testimonyDetailModel:'',
@@ -73,8 +89,38 @@ export default {
       this.$vuetify.goTo('#'+id, {
         container,
         // offset: -55,
-        duration: 200,
+        duration: 234,
       })
+    },
+    apiGetComments() {
+      this.isLoading = true
+
+      // GET COMMENTS
+      this.$API_DUMMY.getComments((err, data) => {
+        if (err) return console.log(err)
+        const start = this.testimonyList.length+1
+        const end = start + 6
+        const commentList = data.slice(start, end).map((comment) => this.getCommentProps(comment))
+        this.$store.dispatch('ui/ui/setTestimonyList', {
+          list: commentList,
+        })
+        this.isLoading=false
+        // this.loadMore(commentList)
+        // console.log(commentList)
+        // this.page += 1
+      })
+    },
+    getCommentProps(comment) {
+      return {
+        id: comment.id,
+        img: 'https://i.pravatar.cc/90?img=' + comment.id,
+        name: comment.name
+          .split(' ')
+          .slice(0, 2)
+          .toString()
+          .replaceAll(',', ' '),
+        body: comment.body,
+      }
     },
   },
 }

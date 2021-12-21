@@ -1,5 +1,5 @@
 <template>
-  <v-list-item class="px-4 px-md-12" :id="elementId" :value="'stid-'+data.id" link>
+  <v-list-item :id="elementId" class="px-6 px-sm-4 px-md-12" :value="'stid-'+data.id" link>
     <v-list-item-avatar class="align-self-start" size="60">
       <v-img :src="data.img">
         <template #placeholder>
@@ -18,9 +18,10 @@
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title
-        class="font-weight-bold text-capitalize grey--text text--darken-2"
+        class="font-weight-bold text-capitalize "
       >
-        {{ data.name }}
+        <span>{{ data.name }}</span>
+        <span class="font-weight-regular text-caption text-none"> - 3 days ago</span>
       </v-list-item-title>
       <v-list-item-subtitle
         class="dng-testimony-item-comment black--text mt-2 text-wrap"
