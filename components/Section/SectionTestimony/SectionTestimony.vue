@@ -1,5 +1,5 @@
 <template>
-  <v-col class="dng-section secondary">
+  <v-col cols="12" class="dng-section secondary">
     <v-col cols="12" class="pa-lg-12 pa-md-12 pa-6">
     <v-row class="mb-6" no-gutters justify="center">
       <SectionTitle
@@ -20,7 +20,7 @@
     <v-row v-if="!maxData" no-gutters justify="center">
       <v-btn
         outlined
-        class="rounded-lg border-medium"
+        class="mt-4 rounded-lg border-medium"
         color="white"
         :loading="isSeeMoreLoading"
         @click="apiGetComments()"

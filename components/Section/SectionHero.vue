@@ -1,5 +1,5 @@
 <template>
-  <v-col class="dng-section dng-section-hero"> 
+  <v-col cols="12" class="dng-section dng-section-hero"> 
   <div v-intersect="{onIntersect}" class="d-flex col col-12">
     <v-row no-gutters>
       <v-col class="d-flex" :class="isIntersecting?'primary':''" cols="12" lg="6" md="8" sm="12">
