@@ -1,5 +1,6 @@
 <template>
-  <v-col cols="12" class="dng-section">
+  <v-col class="dng-section">
+    <v-col cols="12" >
     <v-row no-gutters>
       <v-col class="d-flex justify-center" cols="12" md="6">
         <v-card class="ma-auto elevation-0">
@@ -112,6 +113,7 @@
         </v-col>
       </v-card>
     </v-row>
+  </v-col>
   </v-col>
 </template>
 

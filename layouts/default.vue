@@ -75,7 +75,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <UtilFooter />
+    <SectionFooter />
     <v-slide-y-reverse-transition origin="center center">
       <UtilBtnScrollTop v-if="scrolled" />
     </v-slide-y-reverse-transition>

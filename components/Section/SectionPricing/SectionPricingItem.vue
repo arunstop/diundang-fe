@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" md="6" lg="4" sm="6" class="pa-6 pa-sm-6">
+  <v-col cols="12" md="6" lg="4" sm="6" class="pa-0 py-4 pa-sm-4">
     <v-card class="rounded-xl" outlined>
       <v-card-title
         class=" v-btn--outlined
@@ -8,13 +8,13 @@
           primary--text
           font-weight-bold
           text-center
-          dng-border-thick
+          border-thick
         "
       >
         {{ data.title }}
       </v-card-title>
       <v-card-text class="pa-0">
-        <v-list tile class="pa-0 rounded-lg">
+        <v-list tile class="pa-0 rounded-lg border-medium">
           <template v-for="(feature, index) in data.featureList">
             <v-list-item :key="index">
               <v-list-item-title class="d-flex align-center justify-center">
@@ -64,9 +64,5 @@ export default {
   border-bottom: thin solid grey !important;
 }
 .dng-section-pricing-item-header {
-}
-
-.dng-border-thick{
-  border-width: thick !important;
 }
 </style>

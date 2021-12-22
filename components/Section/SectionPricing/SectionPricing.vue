@@ -1,32 +1,34 @@
 <template>
-  <v-col cols="12" class="dng-section pa-lg-12 pa-md-12 pa-6">
-    <v-row class="mb-6 mx-6" no-gutters justify="center">
-      <SectionTitle
-        :title="`Ergonomic prices, won't let you go bankrupt!`"
-        :color="`secondary`"
-      />
-    </v-row>
-    <v-slide-x-reverse-transition
-      group
-      origin="center center"
-      class="row justify-center no-gutters"
-    >
-      <SectionPricingItem
-        v-for="price in priceList"
-        :key="price.id"
-        :data="price"
-      />
-    </v-slide-x-reverse-transition>
-    <v-row v-if="!maxData" no-gutters justify="center" @click="loadMore(3)">
-      <v-btn
-        outlined
-        class="rounded-lg"
-        color="white"
-        :loading="isSeeMoreLoading"
+  <v-col class="dng-section">
+    <v-col cols="12" class="pa-lg-12 pa-md-12 pa-6">
+      <v-row class="mb-6 mx-6" no-gutters justify="center">
+        <SectionTitle
+          :title="`Ergonomic prices, won't let you go bankrupt!`"
+          :color="`secondary`"
+        />
+      </v-row>
+      <v-slide-x-reverse-transition
+        group
+        origin="center center"
+        class="row justify-center no-gutters"
       >
-        See More ...
-      </v-btn>
-    </v-row>
+        <SectionPricingItem
+          v-for="price in priceList"
+          :key="price.id"
+          :data="price"
+        />
+      </v-slide-x-reverse-transition>
+      <v-row v-if="!maxData" no-gutters justify="center" @click="loadMore(3)">
+        <v-btn
+          outlined
+          class="rounded-lg"
+          color="white"
+          :loading="isSeeMoreLoading"
+        >
+          See More ...
+        </v-btn>
+      </v-row>
+    </v-col>
   </v-col>
 </template>
 

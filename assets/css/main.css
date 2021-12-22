@@ -27,8 +27,8 @@ html {
 }
 
 /* border thick */
-.border-thick{
-    border-width: thick !important;
+.border-thick {
+  border-width: thick !important;
 }
 
 /* SCROLL BAR STYLE */
@@ -60,11 +60,24 @@ html {
   /* background: #000000; */
 }
 
-.position-absolute{
+.position-absolute {
   position: absolute !important;
 }
 
-.border-medium{
-border-width: medium !important;
+.border-medium {
+  border-width: medium !important;
 }
 
+.dng-section {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+  align-items: center;
+  /* padding: 64px !important; */
+  
+}
+
+.dng-section > div {
+  min-height: 100vh !important;
+  max-width: 1440px !important;
+}

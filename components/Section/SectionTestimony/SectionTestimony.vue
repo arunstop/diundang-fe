@@ -1,5 +1,6 @@
 <template>
-  <v-col cols="12" class="dng-section secondary pa-lg-12 pa-md-12 pa-6">
+  <v-col class="dng-section secondary">
+    <v-col cols="12" class="pa-lg-12 pa-md-12 pa-6">
     <v-row class="mb-6" no-gutters justify="center">
       <SectionTitle
         :title="`Hear what people have experienced`"
@@ -16,21 +17,18 @@
     <!-- <v-row class="mb-6" no-gutters>
       
     </v-row> -->
-    <v-row
-      v-if="!maxData"
-      no-gutters
-      justify="center"
-    >
+    <v-row v-if="!maxData" no-gutters justify="center">
       <v-btn
         outlined
         class="rounded-lg border-medium"
         color="white"
         :loading="isSeeMoreLoading"
-      @click="apiGetComments()"
+        @click="apiGetComments()"
       >
         See More ...
       </v-btn>
     </v-row>
+  </v-col>
   </v-col>
 </template>
 
@@ -73,7 +71,9 @@ export default {
         if (err) return console.log(err)
         const start = (this.page - 1) * this.perPage + 1
         const end = start + this.perPage
-        const commentList = data.slice(start, end).map((comment) => this.getCommentProps(comment))
+        const commentList = data
+          .slice(start, end)
+          .map((comment) => this.getCommentProps(comment))
         this.$store.dispatch('ui/ui/setTestimonyList', {
           list: commentList,
         })

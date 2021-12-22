@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" md="6" lg="4" class="py-4 rounded-lg">
+  <v-col cols="12" md="6" lg="4" class="py-0 py-sm-4 rounded-lg" style="max-width:420px;">
     <v-list-item three-line dark link @click="showDetailDialog(data.id)">
       <v-list-item-avatar size="60">
         <v-img :src="data.img">

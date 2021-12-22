@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-  v-if="show" 
+    v-if="show"
     v-model="show"
     max-width="600"
     scrollable
@@ -12,10 +12,10 @@
       <v-expand-transition class="position-absolute" origin="center center">
         <UtilLoadingOverlay v-if="isLoading" :label="isLoadingLabel" />
       </v-expand-transition>
-     <UtilBtnBackDialog :action="()=>hideDialog()"/>
+      <UtilBtnBackDialog :action="() => hideDialog()" />
 
       <v-card-text class="dng-dialog-auth-content d-flex pa-0">
-        <div class="row no-gutters justify-center align-center mx-6" group>
+        <div class="row no-gutters justify-center align-center mx-0 mx-sm-6" group>
           <DialogAuthLogin
             v-if="activeForm === 'LOGIN'"
             :key="`DialogAuthLogin`"
@@ -91,5 +91,4 @@ export default {
 </script>
 
 <style>
-
 </style>

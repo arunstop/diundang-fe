@@ -1,5 +1,6 @@
 <template>
-  <v-col cols="12" class="dng-section pa-lg-12 pa-md-12 pa-6 secondary">
+  <v-col class="dng-section secondary">
+    <v-col cols="12" class="pa-lg-12 pa-md-12 pa-6">
     <v-row class="mb-6 mx-6" no-gutters justify="center">
       <SectionTitle :title="`Amazing things we've done`" :color="`white`" />
     </v-row>
@@ -21,6 +22,7 @@
         See More ...
       </v-btn>
     </v-row>
+  </v-col>
   </v-col>
 </template>
 
