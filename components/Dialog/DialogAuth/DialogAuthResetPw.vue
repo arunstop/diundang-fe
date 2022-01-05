@@ -40,7 +40,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('dialog-auth-toggle-form', { name: 'LOGIN' })"
+        @click="$eventBus.emit('dialog-auth-toggle-form', { name: 'LOGIN' })"
       >
         Login
       </v-btn>
@@ -52,7 +52,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('dialog-auth-toggle-form', { name: 'REGISTER' })"
+        @click="$eventBus.emit('dialog-auth-toggle-form', { name: 'REGISTER' })"
       >
         Register
       </v-btn>
@@ -74,14 +74,14 @@ export default {
     execAuthResetPw() {
       this.$refs.formAuthLogin.validate()
       if (this.isFormAuthLoginValid) {
-        this.$nuxt.$emit('dialog-auth-set-is-loading', {
+        this.$eventBus.emit('dialog-auth-set-is-loading', {
           val: true,
           message: 'Processing reset password...',
         })
         setTimeout(() => {
-          this.$nuxt.$emit('dialog-auth-scroll-top')
+          this.$eventBus.emit('dialog-auth-scroll-top')
           this.isError = true
-          this.$nuxt.$emit('dialog-auth-set-is-loading', {
+          this.$eventBus.emit('dialog-auth-set-is-loading', {
             val: false,
             // message: 'Logging into your account',
           })

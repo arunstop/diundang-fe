@@ -139,7 +139,7 @@ export default {
     }
 
     // select section event
-    this.$nuxt.$on('select-section', (id) => {
+    this.$eventBus.on('select-section', (id) => {
       this.sectionModel = id
       // scroll to element
       // document.getElementById(id)

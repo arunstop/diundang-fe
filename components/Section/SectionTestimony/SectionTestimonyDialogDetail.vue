@@ -65,7 +65,7 @@ export default {
     },
   },
   mounted() {
-    this.$nuxt.$on('dialog-testimony-detail-scroll', (payload) => {
+    this.$eventBus.on('dialog-testimony-detail-scroll', (payload) => {
       this.$nextTick().then(()=>{
         this.scrollToComment(payload.id)
         this.testimonyDetailModel=payload.id

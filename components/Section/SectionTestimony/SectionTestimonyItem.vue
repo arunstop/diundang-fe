@@ -1,6 +1,6 @@
 <template>
   <v-col cols="12" md="6" lg="4" class="py-0 py-sm-4 rounded-lg" style="max-width:420px;">
-    <v-list-item class="px-0 px-sm-4" three-line dark link @click="showDetailDialog(data.id)">
+    <v-list-item three-line dark link @click="showDetailDialog(data.id)">
       <v-list-item-avatar size="60">
         <v-img :src="data.img">
           <template #placeholder>
@@ -44,7 +44,7 @@ export default {
         value: true,
         id,
       })
-      this.$nuxt.$emit('dialog-testimony-detail-scroll', { id :'stid-'+id })
+      this.$eventBus.emit('dialog-testimony-detail-scroll', { id :'stid-'+id })
     },
   },
 }

@@ -70,7 +70,7 @@
       <v-btn rounded color="secondary" x-large type="submit"> Register </v-btn>
       <div class="my-4 mx-auto font-weight-bold grey--text text-center">
         Already have one? or
-        <a class="text-decoration-underline" @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'RESETPW'})">Forgot your password?</a>
+        <a class="text-decoration-underline" @click="$eventBus.emit('dialog-auth-toggle-form', {name:'RESETPW'})">Forgot your password?</a>
       </div>
 
       <v-btn
@@ -78,7 +78,7 @@
         color="secondary"
         x-large
         outlined
-        @click="$nuxt.$emit('dialog-auth-toggle-form', {name:'LOGIN'})"
+        @click="$eventBus.emit('dialog-auth-toggle-form', {name:'LOGIN'})"
       >
         Login
       </v-btn>
@@ -116,14 +116,14 @@ export default {
     execAuthRegister() {
       this.$refs.formAuthRegister.validate()
       if (this.isFormAuthRegisterValid) {
-        this.$nuxt.$emit('dialog-auth-set-is-loading', {
+        this.$eventBus.emit('dialog-auth-set-is-loading', {
           val: true,
           message: 'Registering your information...',
         })
         setTimeout(() => {
-          this.$nuxt.$emit('dialog-auth-scroll-top')
+          this.$eventBus.emit('dialog-auth-scroll-top')
           this.isError = true
-          this.$nuxt.$emit('dialog-auth-set-is-loading', {
+          this.$eventBus.emit('dialog-auth-set-is-loading', {
             val: false,
             // message: 'Logging into your account',
           })
@@ -131,7 +131,7 @@ export default {
         }, 2123)
       return
       }
-      this.$nuxt.$emit('dialog-auth-scroll-top')
+      this.$eventBus.emit('dialog-auth-scroll-top')
     },
   },
 }

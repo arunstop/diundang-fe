@@ -56,17 +56,18 @@ export default {
     },
   },
   mounted() {
-    this.$nuxt.$on('dialog-auth-toggle-form', (payload) => {
+    this.$eventBus.on('dialog-auth-toggle-form', (payload) => {
+      console.log('dialog-auth-toggle-form')
       // scroll to top
       this.scrollTop()
       this.activeForm = payload.name
     })
 
-    this.$nuxt.$on('dialog-auth-scroll-top', () => {
+    this.$eventBus.on('dialog-auth-scroll-top', () => {
       this.scrollTop()
     })
 
-    this.$nuxt.$on('dialog-auth-set-is-loading', (payload) => {
+    this.$eventBus.on('dialog-auth-set-is-loading', (payload) => {
       if (payload.val === false) this.isLoading = false
       this.isLoading = payload.val
       this.isLoadingLabel = payload.message
